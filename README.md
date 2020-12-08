@@ -32,59 +32,58 @@ MySQL
 ## （1）SQLServer连接测试，默认为Default配置 ##
 
 ````
-			 using (DataContext cmd = new DataContext())
-			 {
-				string sql = string.Format("select top 1 * from photo_data");
-				string n = cmd.GetValue<string>(sql);
-			 }
+using (DataContext cmd = new DataContext())
+{
+	string sql = string.Format("select top 1 * from photo_data");
+	string n = cmd.GetValue<string>(sql);
+}
 ````
 
 ## （2）MySql连接测试，默认为MySQL配置 ##
 
 ````
-			using (DataContext cmd = new DataContext("MySQLTest", Transaction.No))
-			{
-				string sql = string.Format("SELECT	* FROM USER LIMIT 1");
-				string n = cmd.GetValue<string>(sql);
-				//Console.WriteLine(n);
-			}
+using (DataContext cmd = new DataContext("MySQLTest", Transaction.No))
+{
+	string sql = string.Format("SELECT	* FROM USER LIMIT 1");
+	string n = cmd.GetValue<string>(sql);
+	//Console.WriteLine(n);
+}
 ````
 
 ## 三、数据写入 ##
 
 ````
-			using (DataContext cmd = new DataContext())
-			{
-				//int n = cmd.Execute("INSERT INTO Dates VALUES (@0, @1, @2)", 2005, 3, 31);  
-				var year = new { Year = 2015, Month = 12, Day = 30 };
-				int n = cmd.Execute("insert into Dates values (@Year,@Month,@Day)", year);
-				Console.WriteLine(n);
-			}
+using (DataContext cmd = new DataContext())
+{
+	//int n = cmd.Execute("INSERT INTO Dates VALUES (@0, @1, @2)", 2005, 3, 31);  
+	var year = new { Year = 2015, Month = 12, Day = 30 };
+	int n = cmd.Execute("insert into Dates values (@Year,@Month,@Day)", year);
+	Console.WriteLine(n);
+}
 ````
 
 ## 四、数据读取 ##
 
 ````
-            using (DataContext cmd = new DataContext())
-            {
-                //（1）直接赋值
-                DateItem date1 = cmd.First<DateItem>("select top 1 * from dates");
-                Console.WriteLine(date1.Year);
+using (DataContext cmd = new DataContext())
+{
+	//（1）直接赋值
+	DateItem date1 = cmd.First<DateItem>("select top 1 * from dates");
+	Console.WriteLine(date1.Year);
 
-                //（2）动态赋值
-                //DateItem date2 = cmd.First<DateItem>("select Year,Month from dates");
-                //Console.WriteLine(date2.Year);
+	//（2）动态赋值
+	//DateItem date2 = cmd.First<DateItem>("select Year,Month from dates");
+	//Console.WriteLine(date2.Year);
 
-                //（3）动态赋值返回最后一条数据，有点神奇
-                //dynamic date3 = cmd.First<ExpandoObject>("select Year,Month from dates");
-                //Console.WriteLine(date3.Year);
+	//（3）动态赋值返回最后一条数据，有点神奇
+	//dynamic date3 = cmd.First<ExpandoObject>("select Year,Month from dates");
+	//Console.WriteLine(date3.Year);
 
-                //（4）返回多个数据
-                var list = cmd.All<DateItem>("select * from dates");
-                foreach (var item in list)
-                {
-                    Console.WriteLine(item.Year);
-                }
-
-            }
+	//（4）返回多个数据
+	var list = cmd.All<DateItem>("select * from dates");
+	foreach (var item in list)
+	{
+		Console.WriteLine(item.Year);
+	}
+}
 ````
