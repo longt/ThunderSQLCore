@@ -72,11 +72,11 @@ namespace ThunderSQLCore_Console
                 //Console.WriteLine(date3.Year);
 
                 //（4）返回多个数据
-                //var list = cmd.All<DateItem>("select * from dates");
-                //foreach (var item in list)
-                //{
-                //    Console.WriteLine(item.Year);
-                //}
+                var list = cmd.All<DateItem>("select * from dates");
+                foreach (var item in list)
+                {
+                    Console.WriteLine(item.Year);
+                }
 
             }
             #endregion
