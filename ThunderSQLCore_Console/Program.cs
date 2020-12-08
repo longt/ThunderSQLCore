@@ -60,8 +60,8 @@ namespace ThunderSQLCore_Console
             using (DataContext cmd = new DataContext())
             {
                 //（1）直接赋值
-                //DateItem date1 = cmd.First<DateItem>("select top 1 * from dates");
-                //Console.WriteLine(date1.Year);
+                DateItem date1 = cmd.First<DateItem>("select top 1 * from dates");
+                Console.WriteLine(date1.Year);
 
                 //（2）动态赋值
                 //DateItem date2 = cmd.First<DateItem>("select Year,Month from dates");
