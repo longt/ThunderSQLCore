@@ -18,12 +18,12 @@ MySQL
     //默认连接配置：
     "Default": {
       "providerName": "System.Data.SqlClient",
-      "connectionString": "server=(local);database=Test;uid=sa;pwd=abc123!@#;"
+      "connectionString": "server=(local);database=Test;uid=sa;pwd=***;"
     },
     //MySQL连接配置：
     "MySQLTest": {
       "providerName": "MySql.Data.MySqlClient",
-      "connectionString": "server=localhost;port=3306;database=mysql;user=root;password=123!@#abcABC"
+      "connectionString": "server=localhost;port=3306;database=mysql;user=root;password=***"
     }
   }
 }
